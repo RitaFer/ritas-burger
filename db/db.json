@@ -1,0 +1,159 @@
+{
+  "ingredients": {
+    "breadType": [
+      {
+        "id": 1,
+        "type": "Normal"
+      },
+      {
+        "id": 2,
+        "type": "Com Gergelim"
+      }
+    ],
+    "breadMode": [
+      {
+        "id": 1,
+        "type": "Selado na Manteiga"
+      },
+      {
+        "id": 2,
+        "type": "Sem Selar"
+      }
+    ],
+    "burguerType": [
+      {
+        "id": 1,
+        "type": "Carne"
+      },
+      {
+        "id": 2,
+        "type": "Vegetariano"
+      },
+      {
+        "id": 3,
+        "type": "Sem Hamburguer"
+      }
+    ],
+    "spices": [
+      {
+        "id": 1,
+        "type": "Sal"
+      },
+      {
+        "id": 2,
+        "type": "Pimenta"
+      },
+      {
+        "id": 3,
+        "type": "Fumaça em Pó"
+      },
+      {
+        "id": 4,
+        "type": "Fumaça em Pó"
+      },
+      {
+        "id": 5,
+        "type": "Edu Guedes"
+      },
+      {
+        "id": 6,
+        "type": "Ana Maria"
+      }
+    ],
+    "coldCuts": [
+      {
+        "id": 1,
+        "type": "Presunto"
+      },
+      {
+        "id": 2,
+        "type": "Salame"
+      },
+      {
+        "id": 3,
+        "type": "Cheddar"
+      },
+      {
+        "id": 4,
+        "type": "Queijo Prato"
+      },
+      {
+        "id": 5,
+        "type": "Queijo Mussarela"
+      }
+    ],
+    "salad": [
+      {
+        "id": 1,
+        "type": "Alface"
+      },
+      {
+        "id": 2,
+        "type": "Tomate"
+      },
+      {
+        "id": 3,
+        "type": "Pepino"
+      },
+      {
+        "id": 4,
+        "type": "Cebola Roxa"
+      }
+    ],
+    "extras": [
+      {
+        "id": 1,
+        "type": "Ovo"
+      },
+      {
+        "id": 2,
+        "type": "Bacon"
+      },
+      {
+        "id": 3,
+        "type": "Cebola Caramelizada"
+      },
+      {
+        "id": 4,
+        "type": "Orégano"
+      }
+    ],
+    "sauces": [
+      {
+        "id": 1,
+        "type": "Ketchup"
+      },
+      {
+        "id": 2,
+        "type": "Requeijão"
+      },
+      {
+        "id": 3,
+        "type": "Mostarda"
+      },
+      {
+        "id": 4,
+        "type": "Maionese"
+      },
+      {
+        "id": 5,
+        "type": "Maionese Verde"
+      }
+    ]
+  },
+  "status": [
+    {
+      "id": 1,
+      "type": "Solicitado"
+    },
+    {
+      "id": 2,
+      "type": "Em produção"
+    },
+    {
+      "id": 3,
+      "type": "Finalizado"
+    }
+  ],
+  "requests": []
+}

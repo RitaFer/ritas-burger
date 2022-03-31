@@ -1,4 +1,4 @@
-# make-your-burguer
+# rita's burguer
 
 ## Project setup
 ```
