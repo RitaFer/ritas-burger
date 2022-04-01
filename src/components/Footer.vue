@@ -1,6 +1,6 @@
 <template>
   <footer id="footer">
-    <p>Rita's Burguer &copy; 2022</p>
+    <p>Rita's Burger &copy; 2022</p>
   </footer>
 </template>
 <script>

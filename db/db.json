@@ -28,7 +28,7 @@
         "type": "Selado + Margarina"
       }
     ],
-    "burguerType": [
+    "burgerType": [
       {
         "id": 1,
         "type": "Carne"

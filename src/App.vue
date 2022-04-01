@@ -16,7 +16,7 @@ export default {
   data() {
     return {
       src_logo: "/img/logo.png",
-      alt_logo: "Logotipo Ritas Burguer"
+      alt_logo: "Logotipo Ritas burger"
     }
   }
 }

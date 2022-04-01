@@ -1,3 +1,3 @@
-# Rita's Burguer
+# Rita's burger
 
-It's a personal project for help me in do burguer sandwiches for my guests at home.
+It's a personal project for help me in do burger sandwiches for my guests at home.
