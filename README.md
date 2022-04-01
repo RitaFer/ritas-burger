@@ -1,19 +1,3 @@
-# rita's burguer
+# Rita's Burguer
 
-## Project setup
-```
-yarn install
-```
-
-### Compiles and hot-reloads for development
-```
-yarn serve
-```
-
-### Compiles and minifies for production
-```
-yarn build
-```
-
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+It's a personal project for help me in do burguer sandwiches for my guests at home.
