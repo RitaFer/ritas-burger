@@ -13,11 +13,19 @@
     "breadMode": [
       {
         "id": 1,
-        "type": "Selado na Manteiga"
+        "type": "Normal"
       },
       {
         "id": 2,
-        "type": "Sem Selar"
+        "type": "Selado + Azeite"
+      },
+      {
+        "id": 3,
+        "type": "Selado + Manteiga"
+      },
+      {
+        "id": 4,
+        "type": "Selado + Margarina"
       }
     ],
     "burguerType": [
