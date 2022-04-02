@@ -57,15 +57,7 @@
       },
       {
         "id": 4,
-        "type": "Fumaça em Pó"
-      },
-      {
-        "id": 5,
         "type": "Edu Guedes"
-      },
-      {
-        "id": 6,
-        "type": "Ana Maria"
       }
     ],
     "coldCuts": [
@@ -83,10 +75,6 @@
       },
       {
         "id": 4,
-        "type": "Queijo Prato"
-      },
-      {
-        "id": 5,
         "type": "Queijo Mussarela"
       }
     ],
@@ -137,14 +125,10 @@
       },
       {
         "id": 3,
-        "type": "Mostarda"
-      },
-      {
-        "id": 4,
         "type": "Maionese"
       },
       {
-        "id": 5,
+        "id": 4,
         "type": "Maionese Verde"
       }
     ]
@@ -163,5 +147,84 @@
       "type": "Finalizado"
     }
   ],
-  "requests": []
+  "requests": [
+    {
+      "nameRequest": "Bruno",
+      "breadTypeRequest": "Normal",
+      "breadModeRequest": "Selado + Margarina",
+      "burgerTypeRequest": "Carne",
+      "spicesRequest": [],
+      "coldCutsRequest": [],
+      "saladRequest": [],
+      "extrasRequest": [],
+      "saucesRequest": [],
+      "statusRequest": "Solicitado",
+      "id": 1
+    },
+    {
+      "nameRequest": null,
+      "breadTypeRequest": "Normal",
+      "breadModeRequest": null,
+      "burgerTypeRequest": null,
+      "spicesRequest": [],
+      "coldCutsRequest": [],
+      "saladRequest": [],
+      "extrasRequest": [],
+      "saucesRequest": [],
+      "statusRequest": "Solicitado",
+      "id": 2
+    },
+    {
+      "nameRequest": null,
+      "breadTypeRequest": null,
+      "breadModeRequest": null,
+      "burgerTypeRequest": null,
+      "spicesRequest": [],
+      "coldCutsRequest": [],
+      "saladRequest": [],
+      "extrasRequest": [],
+      "saucesRequest": [],
+      "statusRequest": "Solicitado",
+      "id": 3
+    },
+    {
+      "nameRequest": null,
+      "breadTypeRequest": null,
+      "breadModeRequest": null,
+      "burgerTypeRequest": null,
+      "spicesRequest": [],
+      "coldCutsRequest": [],
+      "saladRequest": [],
+      "extrasRequest": [],
+      "saucesRequest": [],
+      "statusRequest": "Solicitado",
+      "id": 4
+    },
+    {
+      "nameRequest": "",
+      "breadTypeRequest": "",
+      "breadModeRequest": "",
+      "burgerTypeRequest": "",
+      "spicesRequest": [],
+      "coldCutsRequest": [],
+      "saladRequest": [],
+      "extrasRequest": [],
+      "saucesRequest": [],
+      "statusRequest": "Solicitado",
+      "id": 5
+    },
+    {
+      "nameRequest": null,
+      "breadTypeRequest": null,
+      "breadModeRequest": null,
+      "burgerTypeRequest": null,
+      "spicesRequest": [],
+      "coldCutsRequest": [],
+      "saladRequest": [],
+      "extrasRequest": [],
+      "saucesRequest": [],
+      "statusRequest": "Solicitado",
+      "id": 6
+    }
+  ]
 }
