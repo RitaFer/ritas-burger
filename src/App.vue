@@ -28,16 +28,14 @@ export default {
     padding: 0;
     margin: 0;
     box-sizing: border-box;
+    max-width: 100vw;
+    font-size: 1em;
   }
 
   #app {
     min-height: 100vh;
     display: grid;
     grid-template-rows: auto 1fr auto;
-  }
-
-  .main-container {
-    margin: 50px;
   }
 
   h1 {
