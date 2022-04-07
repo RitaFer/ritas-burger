@@ -150,81 +150,37 @@
   "requests": [
     {
       "nameRequest": "Bruno",
-      "breadTypeRequest": "Normal",
-      "breadModeRequest": "Selado + Margarina",
+      "breadTypeRequest": "Com Gergelim",
+      "breadModeRequest": "Selado + Manteiga",
       "burgerTypeRequest": "Carne",
-      "spicesRequest": [],
-      "coldCutsRequest": [],
-      "saladRequest": [],
-      "extrasRequest": [],
-      "saucesRequest": [],
+      "checkedSpices": [
+        "Sal",
+        "Fumaça em Pó"
+      ],
+      "checkedColdCuts": [
+        "Presunto",
+        "Salame",
+        "Queijo Mussarela",
+        "Cheddar"
+      ],
+      "checkedSalad": [
+        "Alface",
+        "Pepino",
+        "Tomate",
+        "Cebola Roxa"
+      ],
+      "checkedExtras": [
+        "Bacon",
+        "Ovo",
+        "Cebola Caramelizada"
+      ],
+      "checkedSauces": [
+        "Ketchup",
+        "Requeijão",
+        "Maionese Verde"
+      ],
       "statusRequest": "Solicitado",
       "id": 1
-    },
-    {
-      "nameRequest": null,
-      "breadTypeRequest": "Normal",
-      "breadModeRequest": null,
-      "burgerTypeRequest": null,
-      "spicesRequest": [],
-      "coldCutsRequest": [],
-      "saladRequest": [],
-      "extrasRequest": [],
-      "saucesRequest": [],
-      "statusRequest": "Solicitado",
-      "id": 2
-    },
-    {
-      "nameRequest": null,
-      "breadTypeRequest": null,
-      "breadModeRequest": null,
-      "burgerTypeRequest": null,
-      "spicesRequest": [],
-      "coldCutsRequest": [],
-      "saladRequest": [],
-      "extrasRequest": [],
-      "saucesRequest": [],
-      "statusRequest": "Solicitado",
-      "id": 3
-    },
-    {
-      "nameRequest": null,
-      "breadTypeRequest": null,
-      "breadModeRequest": null,
-      "burgerTypeRequest": null,
-      "spicesRequest": [],
-      "coldCutsRequest": [],
-      "saladRequest": [],
-      "extrasRequest": [],
-      "saucesRequest": [],
-      "statusRequest": "Solicitado",
-      "id": 4
-    },
-    {
-      "nameRequest": "",
-      "breadTypeRequest": "",
-      "breadModeRequest": "",
-      "burgerTypeRequest": "",
-      "spicesRequest": [],
-      "coldCutsRequest": [],
-      "saladRequest": [],
-      "extrasRequest": [],
-      "saucesRequest": [],
-      "statusRequest": "Solicitado",
-      "id": 5
-    },
-    {
-      "nameRequest": null,
-      "breadTypeRequest": null,
-      "breadModeRequest": null,
-      "burgerTypeRequest": null,
-      "spicesRequest": [],
-      "coldCutsRequest": [],
-      "saladRequest": [],
-      "extrasRequest": [],
-      "saucesRequest": [],
-      "statusRequest": "Solicitado",
-      "id": 6
     }
   ]
 }
