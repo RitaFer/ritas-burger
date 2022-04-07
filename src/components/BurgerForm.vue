@@ -39,7 +39,7 @@
             Tempero
           </label>
           <div class="checkbox-container" v-for="spicesRequest in spices" :key="spicesRequest.id">
-            <input type="checkbox" name="spicesRequest" :value="spicesRequest.type">
+            <input type="checkbox" name="spicesRequest" :value="spicesRequest.type" v-model="checkedSpices">
             <span>{{ spicesRequest.type }}</span>
           </div>
         </div>
@@ -48,7 +48,7 @@
             Frios
           </label>
           <div class="checkbox-container" v-for="coldCutsRequest in coldCuts" :key="coldCutsRequest.id">
-            <input type="checkbox" name="coldCutsRequest" :value="coldCutsRequest.type">
+            <input type="checkbox" name="coldCutsRequest" :value="coldCutsRequest.type" v-model="checkedColdCuts">
             <span>{{ coldCutsRequest.type }}</span>
           </div>
         </div>
@@ -57,7 +57,7 @@
             Salada
           </label>
           <div class="checkbox-container" v-for="saladRequest in salad" :key="saladRequest.id">
-            <input type="checkbox" name="saladRequest" :value="saladRequest.type">
+            <input type="checkbox" name="saladRequest" :value="saladRequest.type" v-model="checkedSalad">
             <span>{{ saladRequest.type }}</span>
           </div>
         </div>
@@ -66,7 +66,7 @@
             Extras
           </label>
           <div class="checkbox-container" v-for="extrasRequest in extras" :key="extrasRequest.id">
-            <input type="checkbox" name="extrasRequest" :value="extrasRequest.type">
+            <input type="checkbox" name="extrasRequest" :value="extrasRequest.type" v-model="checkedExtras">
             <span>{{ extrasRequest.type }}</span>
           </div>
         </div>
@@ -75,7 +75,7 @@
             Molhos
           </label>
           <div class="checkbox-container" v-for="saucesRequest in sauces" :key="saucesRequest.id">
-            <input type="checkbox" name="saucesRequest" :value="saucesRequest.type">
+            <input type="checkbox" name="saucesRequest" :value="saucesRequest.type" v-model="checkedSauces">
             <span>{{ saucesRequest.type }}</span>
           </div>
         </div>
@@ -106,11 +106,11 @@ export default {
       breadTypeRequest: null,
       breadModeRequest: null,
       burgerTypeRequest: null,
-      spicesRequest: [],
-      coldCutsRequest: [],
-      saladRequest: [],
-      extrasRequest: [],
-      saucesRequest: [],
+      checkedSpices: [],
+      checkedColdCuts: [],
+      checkedSalad: [],
+      checkedExtras: [],
+      checkedSauces: [],
       msg: null
     } 
   },
@@ -135,11 +135,11 @@ export default {
         breadTypeRequest: this.breadTypeRequest,
         breadModeRequest: this.breadModeRequest,
         burgerTypeRequest: this.burgerTypeRequest,
-        spicesRequest: Array.from(this.spicesRequest),
-        coldCutsRequest: Array.from(this.coldCutsRequest),
-        saladRequest: Array.from(this.saladRequest),
-        extrasRequest: Array.from(this.extrasRequest),
-        saucesRequest: Array.from(this.saucesRequest),
+        checkedSpices: Array.from(this.checkedSpices),
+        checkedColdCuts: Array.from(this.checkedColdCuts),
+        checkedSalad: Array.from(this.checkedSalad),
+        checkedExtras: Array.from(this.checkedExtras),
+        checkedSauces: Array.from(this.checkedSauces),
         statusRequest: "Solicitado"
       }
 
@@ -161,11 +161,11 @@ export default {
       this.breadTypeRequest = ""
       this.breadModeRequest = ""
       this.burgerTypeRequest = ""
-      this.spicesRequest = []
-      this.coldCutsRequest = []
-      this.saladRequest = []
-      this.extrasRequest = []
-      this.saucesRequest = []
+      this.checkedSpices = []
+      this.checkedColdCuts = []
+      this.checkedSalad = []
+      this.checkedExtras = []
+      this.checkedSauces = []
     }
   },
     mounted () {
