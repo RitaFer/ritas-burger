@@ -149,36 +149,35 @@
   ],
   "requests": [
     {
-      "nameRequest": "Rita Ferreira",
+      "nameRequest": "Bruno",
       "breadTypeRequest": "Normal",
-      "breadModeRequest": "Normal",
-      "burgerTypeRequest": "Vegetariano",
+      "breadModeRequest": "Selado + Margarina",
+      "burgerTypeRequest": "Carne",
       "checkedSpices": [
         "Fumaça em Pó",
         "Edu Guedes"
       ],
       "checkedColdCuts": [
-        "Queijo Mussarela",
-        "Salame",
+        "Presunto",
         "Cheddar",
-        "Presunto"
+        "Salame",
+        "Queijo Mussarela"
       ],
       "checkedSalad": [
+        "Tomate",
         "Pepino",
-        "Alface",
-        "Tomate"
+        "Alface"
       ],
       "checkedExtras": [
-        "Bacon",
+        "Cebola Caramelizada",
         "Orégano"
       ],
       "checkedSauces": [
         "Ketchup",
         "Maionese",
-        "Maionese Verde",
-        "Requeijão"
+        "Maionese Verde"
       ],
-      "statusRequest": "Solicitado",
+      "statusRequest": "Em produção",
       "id": 1
     }
   ]
