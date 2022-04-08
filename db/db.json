@@ -149,35 +149,34 @@
   ],
   "requests": [
     {
-      "nameRequest": "Bruno",
-      "breadTypeRequest": "Com Gergelim",
-      "breadModeRequest": "Selado + Manteiga",
-      "burgerTypeRequest": "Carne",
+      "nameRequest": "Rita Ferreira",
+      "breadTypeRequest": "Normal",
+      "breadModeRequest": "Normal",
+      "burgerTypeRequest": "Vegetariano",
       "checkedSpices": [
-        "Sal",
-        "Fumaça em Pó"
+        "Fumaça em Pó",
+        "Edu Guedes"
       ],
       "checkedColdCuts": [
-        "Presunto",
-        "Salame",
         "Queijo Mussarela",
-        "Cheddar"
+        "Salame",
+        "Cheddar",
+        "Presunto"
       ],
       "checkedSalad": [
-        "Alface",
         "Pepino",
-        "Tomate",
-        "Cebola Roxa"
+        "Alface",
+        "Tomate"
       ],
       "checkedExtras": [
         "Bacon",
-        "Ovo",
-        "Cebola Caramelizada"
+        "Orégano"
       ],
       "checkedSauces": [
         "Ketchup",
-        "Requeijão",
-        "Maionese Verde"
+        "Maionese",
+        "Maionese Verde",
+        "Requeijão"
       ],
       "statusRequest": "Solicitado",
       "id": 1

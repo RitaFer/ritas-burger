@@ -48,11 +48,11 @@
         </div>
       </div>
     </div>
-    <div class="action">
-      <select name="status" class="status" @change="updateBurger($event, requests.id)">
+    <div class="action" v-for="request in requests" :key="request.id">
+      <select name="status" class="status" @change="updateBurger($event, request.id)">
         <option :value="s.type" v-for="s in status" :key="s.id" :selected="request.statusRequest == s.type">{{ s.type }}</option>
       </select>
-      <button class="delete-btn" @click="deleteBurger(requests.id)">Cancelar Pedido</button>
+      <button class="delete-btn" @click="deleteBurger(request.id)">Cancelar Pedido</button>
     </div>
   </div>
 </template>
@@ -79,23 +79,15 @@ export default {
         const data = await req.json()
         this.status = data
       },
-      async deleteBurger(id) {
+      async deleteBurger(id){
         const req = await fetch(`http://localhost:3000/requests/${id}`, {
           method: "DELETE"
-        });
+        })
         const res = await req.json()
-        this.getPedidos()
-      },
-      async updateBurger(event, id) {
-        const option = event.target.value;
-        const dataJson = JSON.stringify({status: option});
-        const req = await fetch(`http://localhost:3000/requests/${id}`, {
-          method: "PATCH",
-          headers: { "Content-Type" : "application/json" },
-          body: dataJson
-        });
-        const res = await req.json()
-        console.log(res)
+
+        //msg
+
+        this.getPedidos();
       }
     },
     mounted () {
