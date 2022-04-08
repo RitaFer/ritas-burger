@@ -1,15 +1,17 @@
 <template>
   <div>
     <div>
-      <form id="burger-form" @submit="createBurger">
+      <form id="burger-form" @submit.prevent="createBurger">
         <h1>Monte o seu burger ♥</h1>
         <Message :msg="msg" v-show="msg" />
-        <div class="input-container">
+        <!-- <div class="input-container">
           <label for="name">
             Nome
           </label>
           <input type="text" id="name" name="name" v-model="nameRequest" placeholder="Digite o seu nome">
-        </div>
+        </div> -->
+        <InputText label="Nome" placeholder="Digite seu nome" v-model="nameRequest"/>
+
         <div class="input-container">
           <label for="breadType">
             Pão
@@ -89,6 +91,7 @@
 
 <script>
 import Message from './Message'
+import InputText from './inputs/Text.vue'
 
 export default {
   name: "BurgerForm",
@@ -128,8 +131,8 @@ export default {
       this.extras = data.extras
       this.sauces = data.sauces
     },
-    async createBurger(e) {
-      e.preventDefault();
+    async createBurger() {
+      console.log(this.nameRequest)
       const data = {
         nameRequest: this.nameRequest,
         breadTypeRequest: this.breadTypeRequest,
@@ -172,7 +175,8 @@ export default {
       this.getIngredients()
     },
     components: {
-      Message
+      Message,
+      InputText
     }
 }
 </script>
