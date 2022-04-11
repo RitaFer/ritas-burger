@@ -4,14 +4,8 @@
       <form id="burger-form" @submit.prevent="createBurger">
         <h1>Monte o seu burger ♥</h1>
         <Message :msg="msg" v-show="msg" />
-        <!-- <div class="input-container">
-          <label for="name">
-            Nome
-          </label>
-          <input type="text" id="name" name="name" v-model="nameRequest" placeholder="Digite o seu nome">
-        </div> -->
-        <InputText label="Nome" placeholder="Digite seu nome" v-model="nameRequest"/>
-
+        <InputText type="text" label="Nome" placeholder="Digite seu nome" @updateValue="this.nameRequest = $event" />
+        
         <div class="input-container">
           <label for="breadType">
             Pão
@@ -91,7 +85,8 @@
 
 <script>
 import Message from './Message'
-import InputText from './inputs/Text.vue'
+import InputText from '@/components/inputs/Text.vue'
+import { reactive, toRefs } from '@vue/reactivity'
 
 export default {
   name: "BurgerForm",
@@ -121,7 +116,7 @@ export default {
     async getIngredients() {
       const req = await fetch('http://localhost:3000/ingredients')
       const data = await req.json()
-
+  
       this.breadType = data.breadType
       this.breadMode = data.breadMode
       this.burgerType = data.burgerType
@@ -177,6 +172,12 @@ export default {
     components: {
       Message,
       InputText
+    },
+    setup() {
+      const data = reactive({
+        name: "Rita"
+      });
+      return { ... toRefs(data)};
     }
 }
 </script>

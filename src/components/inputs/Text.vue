@@ -3,9 +3,11 @@
     <label>
       {{ label }}
     </label>
-    <input 
+    <input
+      :type="type"
       :placeholder="placeholder" 
-      v-model="nameRequest"
+      :value="textInserted"
+      @input="$emit('updateValue', $event.target.value)"
       />
   </div>
 </template>
@@ -13,6 +15,21 @@
 <script>
 export default {
   props: {
+    id: {
+      type: String,
+      required: true,
+      default: ""
+    },
+    name: {
+      type: String,
+      required: true,
+      default: ""
+    },
+    type: {
+      type: String,
+      required: true,
+      default: "text"
+    },
     placeholder: {
       type: String,
       required: true,
@@ -22,11 +39,6 @@ export default {
       type: String,
       required: true,
       default: ""
-    }
-  },
-  data() {
-    return {
-      nameRequest: ''
     }
   }
 }
