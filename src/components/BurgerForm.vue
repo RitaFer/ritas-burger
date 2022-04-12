@@ -4,8 +4,11 @@
       <form id="burger-form" @submit.prevent="createBurger">
         <h1>Monte o seu burger ♥</h1>
         <Message :msg="msg" v-show="msg" />
+
         <InputText type="text" label="Nome" placeholder="Digite seu nome" @updateValue="this.nameRequest = $event" />
         
+        
+
         <div class="input-container">
           <label for="breadType">
             Pão
@@ -30,6 +33,8 @@
             <option v-for="burgerTypeRequest in burgerType" :key="burgerTypeRequest.id" :value="burgerTypeRequest.type">{{ burgerTypeRequest.type }}</option>
           </select>
         </div>
+
+
         <div class="opcionais-container">
           <label class="opcionais-title" for="spices">
             Tempero
@@ -86,7 +91,8 @@
 <script>
 import Message from './Message'
 import InputText from '@/components/inputs/Text.vue'
-import { reactive, toRefs } from '@vue/reactivity'
+import Select from '@/components/inputs/Text.vue'
+import Checkbox from '@/components/inputs/Checkbox.vue'
 
 export default {
   name: "BurgerForm",
@@ -171,13 +177,9 @@ export default {
     },
     components: {
       Message,
-      InputText
-    },
-    setup() {
-      const data = reactive({
-        name: "Rita"
-      });
-      return { ... toRefs(data)};
+      InputText,
+      Select,
+      Checkbox
     }
 }
 </script>

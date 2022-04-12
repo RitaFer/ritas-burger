@@ -6,7 +6,6 @@
     <input
       :type="type"
       :placeholder="placeholder" 
-      :value="textInserted"
       @input="$emit('updateValue', $event.target.value)"
       />
   </div>
@@ -15,16 +14,6 @@
 <script>
 export default {
   props: {
-    id: {
-      type: String,
-      required: true,
-      default: ""
-    },
-    name: {
-      type: String,
-      required: true,
-      default: ""
-    },
     type: {
       type: String,
       required: true,
@@ -45,5 +34,22 @@ export default {
 </script>
 
 <style>
+  .input-container {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 10px;
+    padding: 5px 10px;
+  }
 
+  input {
+    padding: 5px 10px;
+  }
+
+  label {
+    font-weight: bold;
+    margin-bottom: 10px;
+    color: #222;
+    padding: 5px 10px;
+    border-left: 4px solid #fcba0398;
+  }
 </style>

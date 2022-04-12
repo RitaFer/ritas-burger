@@ -1,21 +1,32 @@
 <template>
-  <div class="opcionais-container">
-    <label class="opcionais-title" for="spices">
-      Tempero
-    </label>
-    <div class="checkbox-container" v-for="spicesRequest in spices" :key="spicesRequest.id">
-      <input type="checkbox" name="spicesRequest" :value="spicesRequest.type" v-model="checkedSpices">
-        <span>{{ spicesRequest.type }}</span>
-    </div>
-  </div>
+  <b-form-checkbox 
+    :id="id"
+    :ref="`${id}-ref`"
+    size="lg" 
+    class="custom-checkbox"
+    v-model="valueInput"
+    >
+    <span class="body-1">{{ getConfig.label }}</span>
+  </b-form-checkbox>
 </template>
 
 <script>
-export default {
 
+export default {
+  props: {
+    label: {
+      type: String,
+      required: true
+    }
+  },
+  computed: {
+    getConfig () {
+      return {
+        ...this.defaultConfig,
+        ...this.config,
+        label: this.label ?? this.config?.label ?? this.defaultConfig?.label
+      }
+    }
+  }
 }
 </script>
-
-<style>
-
-</style>
