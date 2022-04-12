@@ -120,7 +120,7 @@ export default {
   },
   methods: {
     async getIngredients() {
-      const req = await fetch('http://localhost:3000/ingredients')
+      const req = await fetch('https://ritasburger-api.herokuapp.com/ingredients')
       const data = await req.json()
   
       this.breadType = data.breadType
@@ -149,7 +149,7 @@ export default {
 
       const dataJson = JSON.stringify(data)
 
-      const req = await fetch("http://localhost:3000/requests", {
+      const req = await fetch("https://ritasburger-api.herokuapp.com/requests", {
         method: "POST",
         headers: { "Content-Type" : "application/json" },
         body: dataJson

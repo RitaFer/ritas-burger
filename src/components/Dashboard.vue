@@ -72,19 +72,19 @@ export default {
     },
     methods: {
       async getPedidos() {
-        const req = await fetch('http://localhost:3000/requests')
+        const req = await fetch('https://ritasburger-api.herokuapp.com/requests')
         const data = await req.json()
         this.requests = data
 
         this.getStatus()
       },
       async getStatus() {
-        const req = await fetch('http://localhost:3000/status')
+        const req = await fetch('https://ritasburger-api.herokuapp.com/status')
         const data = await req.json()
         this.status = data
       },
       async deleteBurger(id){
-        const req = await fetch(`http://localhost:3000/requests/${id}`, {
+        const req = await fetch(`https://ritasburger-api.herokuapp.com/requests/${id}`, {
           method: "DELETE"
         })
         const res = await req.json()
@@ -96,7 +96,7 @@ export default {
       async updateBurger (event, id) {
         const option = event.target.value;
         const dataJson = JSON.stringify({statusRequest: option});
-        const req = await fetch(`http://localhost:3000/requests/${id}`, {
+        const req = await fetch(`https://ritasburger-api.herokuapp.com/requests/${id}`, {
           method: "PATCH",
           headers: {"Content-type":"application/json"},
           body: dataJson
