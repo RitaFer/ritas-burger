@@ -5,10 +5,14 @@
   "scripts": {
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
-    "backend": "json-server --watch db/db.json"
+    "backend": "json-server --watch db/db.json",
+    "postinstall": "npm run build",
+    "start": "node server.js",
+    "install:clean": "rm -rf node_modules/ && rm package-lock.json && npm install && npm run dev"
   },
   "dependencies": {
     "core-js": "^3.8.3",
+    "express": "^4.17.3",
     "vue": "^3.2.13",
     "vue-router": "^4.0.3"
   },
