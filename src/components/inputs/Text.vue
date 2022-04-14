@@ -6,7 +6,8 @@
     <input
       :type="type"
       :placeholder="placeholder" 
-      @input="$emit('updateValue', $event.target.value)"
+      :value="value"
+      @input="$emit('input', $event.target.value)"
       />
   </div>
 </template>
@@ -18,6 +19,11 @@ export default {
       type: String,
       required: true,
       default: "text"
+    },
+    value: {
+      type: String,
+      required: true,
+      default: ""
     },
     placeholder: {
       type: String,

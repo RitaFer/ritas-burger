@@ -4,7 +4,7 @@
       <form id="burger-form" @submit.prevent="createBurger">
         <h1>Monte o seu burger ♥</h1>
         <Message :msg="msg" v-show="msg" />
-        <InputText type="text" label="Nome" placeholder="Digite seu nome" @updateValue="this.nameRequest = $event" />
+        <InputText type="text" label="Nome" placeholder="Digite seu nome" v-model="nameRequest" />
         
         
 
