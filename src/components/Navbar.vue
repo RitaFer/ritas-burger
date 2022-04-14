@@ -6,9 +6,9 @@
     <router-link to="/">
       Home
     </router-link>
-    <router-link to="/requests">
+    <!-- <router-link to="/requests">
       Pedidos
-    </router-link>
+    </router-link> -->
   </div>
 </template>
 <script>
