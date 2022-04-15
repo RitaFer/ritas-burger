@@ -6,7 +6,8 @@
     <input
       :type="type"
       :placeholder="placeholder" 
-      @input="$emit('updateValue', $event.target.value)"
+      :value="modelValue"
+      @input="$emit('update:modelValue', $event.target.value)"
       />
   </div>
 </template>
@@ -16,18 +17,18 @@ export default {
   props: {
     type: {
       type: String,
-      required: true,
-      default: "text"
+      required: true
+    },
+    modelValue: {
+      required: true
     },
     placeholder: {
       type: String,
-      required: true,
-      default: ""
+      required: true
     },
     label: {
       type: String,
-      required: true,
-      default: ""
+      required: true
     }
   }
 }

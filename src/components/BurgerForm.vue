@@ -4,84 +4,98 @@
       <form id="burger-form" @submit.prevent="createBurger">
         <h1>Monte o seu burger ♥</h1>
         <Message :msg="msg" v-show="msg" />
-        <InputText type="text" label="Nome" placeholder="Digite seu nome" @updateValue="this.nameRequest = $event" />
+        <InputText type="text" 
+        label="Nome" 
+        placeholder="Digite seu nome" 
+        v-model="form.username" />
         
         
 
         <div class="input-container">
-          <label for="breadType">
-            Pão
-          </label>
-          <select name="breadTypeRequest" id="breadTypeRequest" v-model="breadTypeRequest">
-            <option v-for="breadTypeRequest in breadType" :key="breadTypeRequest.id" :value="breadTypeRequest.type">{{ breadTypeRequest.type }}</option>
-          </select>
+          <InputSelect id="breadTypes" 
+          v-model="form.breadType"
+          label="Pão"
+          :options="options.breadType"/>
         </div>
         <div class="input-container">
-          <label for="breadMode">
-            Modo do Pão
-          </label>
-          <select name="breadModeRequest" id="breadModeRequest" v-model="breadModeRequest">
-            <option v-for="breadModeRequest in breadMode" :key="breadModeRequest.id" :value="breadModeRequest.type">{{ breadModeRequest.type }}</option>
-          </select>
+          <InputSelect id="breadModes" 
+          v-model="form.breadMode"
+          label="Modo do Pão"
+          :options="options.breadMode"/>
         </div>
         <div class="input-container">
-          <label for="burgerType">
-            Hamburguer
-          </label>
-          <select name="burgerTypeRequest" id="burgerTypeRequest" v-model="burgerTypeRequest">
-            <option v-for="burgerTypeRequest in burgerType" :key="burgerTypeRequest.id" :value="burgerTypeRequest.type">{{ burgerTypeRequest.type }}</option>
-          </select>
+          <InputSelect id="burgerTypes" 
+          v-model="form.burgerType"
+          label="Hamburguer"
+          :options="options.burgerType"/>
         </div>
 
 
         <div class="opcionais-container">
-          <label class="opcionais-title" for="spices">
+          <label class="opcionais-title">
             Tempero
           </label>
-          <div class="checkbox-container" v-for="spicesRequest in spices" :key="spicesRequest.id">
-            <input type="checkbox" name="spicesRequest" :value="spicesRequest.type" v-model="checkedSpices">
-            <span>{{ spicesRequest.type }}</span>
+          <div class="checkbox-container" v-for="item in options.spices" :key="item.id">
+            <input type="checkbox" :value="item.type" v-model="form.spices">
+            <span>{{ item.type }}</span>
           </div>
         </div>
         <div class="opcionais-container">
-          <label class="opcionais-title" for="coldCuts">
+          <label class="opcionais-title">
             Frios
           </label>
-          <div class="checkbox-container" v-for="coldCutsRequest in coldCuts" :key="coldCutsRequest.id">
-            <input type="checkbox" name="coldCutsRequest" :value="coldCutsRequest.type" v-model="checkedColdCuts">
-            <span>{{ coldCutsRequest.type }}</span>
+          <div class="checkbox-container" 
+          v-for="item in options.coldCuts" 
+          :key="item.id">
+            <input type="checkbox" 
+            :value="item.type" 
+            v-model="form.coldCuts">
+            <span>{{ item.type }}</span>
           </div>
         </div>
         <div class="opcionais-container">
-          <label class="opcionais-title" for="salad">
+          <label class="opcionais-title">
             Salada
           </label>
-          <div class="checkbox-container" v-for="saladRequest in salad" :key="saladRequest.id">
-            <input type="checkbox" name="saladRequest" :value="saladRequest.type" v-model="checkedSalad">
-            <span>{{ saladRequest.type }}</span>
+          <div class="checkbox-container" 
+          v-for="item in options.salads" 
+          :key="item.id">
+            <input type="checkbox" 
+            :value="item.type" 
+            v-model="form.salads">
+            <span>{{ item.type }}</span>
           </div>
         </div>
         <div class="opcionais-container">
-          <label class="opcionais-title" for="extras">
+          <label class="opcionais-title">
             Extras
           </label>
-          <div class="checkbox-container" v-for="extrasRequest in extras" :key="extrasRequest.id">
-            <input type="checkbox" name="extrasRequest" :value="extrasRequest.type" v-model="checkedExtras">
-            <span>{{ extrasRequest.type }}</span>
+          <div class="checkbox-container" 
+          v-for="item in options.extras" 
+          :key="item.id">
+            <input type="checkbox"
+            :value="item.type" 
+            v-model="form.extras">
+            <span>{{ item.type }}</span>
           </div>
         </div>
         <div class="opcionais-container">
-          <label class="opcionais-title" for="sauces">
+          <label class="opcionais-title">
             Molhos
           </label>
-          <div class="checkbox-container" v-for="saucesRequest in sauces" :key="saucesRequest.id">
-            <input type="checkbox" name="saucesRequest" :value="saucesRequest.type" v-model="checkedSauces">
-            <span>{{ saucesRequest.type }}</span>
+          <div class="checkbox-container" 
+          v-for="item in options.sauces" 
+          :key="item.id">
+            <input type="checkbox" 
+            :value="item.type" 
+            v-model="form.sauces">
+            <span>{{ item.type }}</span>
           </div>
         </div>
         <div class="input-container-btn">
           <input type="submit" value="Finalizar Pedido" class="submit-btn">
-          </div>
+        </div>
+        {{ form }}
       </form>
     </div>
   </div>
@@ -90,30 +104,45 @@
 <script>
 import Message from './Message'
 import InputText from '@/components/inputs/Text.vue'
+import InputSelect from '@/components/inputs/Select.vue'
 import Select from '@/components/inputs/Text.vue'
 import Checkbox from '@/components/inputs/Checkbox.vue'
 
 export default {
   name: "BurgerForm",
+  components: {
+    Message,
+    InputText,
+    InputSelect,
+    Select,
+    Checkbox
+  },
+  mounted () {
+    this.getIngredients()
+  },
   data() {
     return {
-      breadType: null,
-      breadMode: null,
-      burgerType: null,
-      spices: [],
-      coldCuts: [],
-      salad: [],
-      extras: [],
-      sauces: [],
-      nameRequest: null,
-      breadTypeRequest: null,
-      breadModeRequest: null,
-      burgerTypeRequest: null,
-      checkedSpices: [],
-      checkedColdCuts: [],
-      checkedSalad: [],
-      checkedExtras: [],
-      checkedSauces: [],
+      form: {
+        username: undefined,
+        breadType: undefined,
+        breadMode: undefined,
+        burgerType: undefined,
+        spices: [],
+        coldCuts: [],
+        salads: [],
+        extras: [],
+        sauces: []
+      },
+      options: {
+        breadTypes: [],
+        breadModes: [],
+        burgerType: [],
+        spices: [],
+        coldCuts: [],
+        salads: [],
+        extras: [],
+        sauces: []
+      },
       msg: null
     } 
   },
@@ -121,65 +150,52 @@ export default {
     async getIngredients() {
       const req = await fetch('https://ritasburger-api.herokuapp.com/ingredients')
       const data = await req.json()
-  
-      this.breadType = data.breadType
-      this.breadMode = data.breadMode
-      this.burgerType = data.burgerType
-      this.spices = data.spices
-      this.coldCuts = data.coldCuts
-      this.salad = data.salad
-      this.extras = data.extras
-      this.sauces = data.sauces
+      this.options.breadType = data.breadType
+      this.options.breadMode = data.breadMode
+      this.options.burgerType = data.burgerType
+      this.options.spices = data.spices
+      this.options.coldCuts = data.coldCuts
+      this.options.salads = data.salad
+      this.options.extras = data.extras
+      this.options.sauces = data.sauces
     },
-    async createBurger() {
-      console.log(this.nameRequest)
+    async createBurger($event) {
       const data = {
-        nameRequest: this.nameRequest,
-        breadTypeRequest: this.breadTypeRequest,
-        breadModeRequest: this.breadModeRequest,
-        burgerTypeRequest: this.burgerTypeRequest,
-        checkedSpices: Array.from(this.checkedSpices),
-        checkedColdCuts: Array.from(this.checkedColdCuts),
-        checkedSalad: Array.from(this.checkedSalad),
-        checkedExtras: Array.from(this.checkedExtras),
-        checkedSauces: Array.from(this.checkedSauces),
+        nameRequest: this.form.username,
+        breadTypeRequest: this.form.breadType,
+        breadModeRequest: this.form.breadMode,
+        burgerTypeRequest: this.form.burgerType,
+        checkedSpices: Array.from(this.form.spices),
+        checkedColdCuts: Array.from(this.form.coldCuts),
+        checkedSalad: Array.from(this.form.salads),
+        checkedExtras: Array.from(this.form.extras),
+        checkedSauces: Array.from(this.form.sauces),
         statusRequest: "Solicitado"
       }
 
-      const dataJson = JSON.stringify(data)
+      const jsonInText = JSON.stringify(data)
 
       const req = await fetch("https://ritasburger-api.herokuapp.com/requests", {
         method: "POST",
         headers: { "Content-Type" : "application/json" },
-        body: dataJson
+        body: jsonInText
       });
       
-      const res = await req.json()
-      console.log(res)
-
       this.msg = "Pedido realizado com sucesso!"
       setTimeout(() => this.msg = "", 3000)
 
-      this.nameRequest = ""
-      this.breadTypeRequest = ""
-      this.breadModeRequest = ""
-      this.burgerTypeRequest = ""
-      this.checkedSpices = []
-      this.checkedColdCuts = []
-      this.checkedSalad = []
-      this.checkedExtras = []
-      this.checkedSauces = []
+      this.form = {
+        breadType: undefined,
+        breadMode: undefined,
+        burgerType: undefined,
+        spices: [],
+        coldCuts: [],
+        salads: [],
+        extras: [],
+        sauces: []
+      }
     }
-  },
-    mounted () {
-      this.getIngredients()
-    },
-    components: {
-      Message,
-      InputText,
-      Select,
-      Checkbox
-    }
+  }
 }
 </script>
 
