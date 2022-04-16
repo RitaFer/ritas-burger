@@ -5,7 +5,7 @@
     <div class="card" v-for="request in requests" :key="request.id">
       <div class="id">
         <span>Pedido nº:</span>
-        <p>{{ request.id }}</p>
+        <p>{{ toId(request.id) }}</p>
       </div>
       <div class="name">
         <p>{{ request.username }}</p>
@@ -59,9 +59,8 @@
         </div>
       </div>
       <div class="action">
-        <select name="status" class="status" @change="updateBurger($event, request.id)">
-          <option :value="s.type" v-for="s in status" :key="s.id" :selected="request.statusRequest == s.type">{{ s.type }}</option>
-        </select>
+        <InputSelect id="status" v-model="request.status"
+        @input="updateStatus(request)" :options="status"/>
         <button class="delete-btn" @click="deleteBurger(request.id)">Cancelar Pedido</button>
       </div>
     </div>
@@ -71,28 +70,43 @@
 </template>
 <script>
 import Message from './Message.vue'
+import { reference } from '@/firebase'
+import { onValue } from "firebase/database"
+import Vue from 'vue'
+import InputSelect from "@/components/inputs/Select"
+import { setBurger, getBurgers } from '@/firebase'
 
 export default {
   data() {
       return {
-        requests: null,
+        requests: [],
         requests_id: null,
-        status: [],
+        status: [
+          { id: 1, value: 'Em espera' },
+          { id: 2, value: 'Em produção' },
+          { id: 3, value: 'Finalizado' },
+        ],
         msg: null
       }
     },
     methods: {
-      async getPedidos() {
-        const req = await fetch('https://ritasburger-api.herokuapp.com/requests')
-        const data = await req.json()
-        this.requests = data
-
-        this.getStatus()
+      async updateStatus ({ id, status, username }) {
+        const oldData = await getBurgers().then(x => {
+          return x?.[username] ?? []
+        })
+        const oldDate = oldData.map( item => {
+          if (item.id === id) {
+            return {
+              ...item,
+              status
+            }
+          }
+          return item
+        })
       },
-      async getStatus() {
-        const req = await fetch('https://ritasburger-api.herokuapp.com/status')
-        const data = await req.json()
-        this.status = data
+      toId (id) {
+        console.log('id', id)
+        return id.slice(0, 5)
       },
       async deleteBurger(id){
         const req = await fetch(`https://ritasburger-api.herokuapp.com/requests/${id}`, {
@@ -117,11 +131,22 @@ export default {
         setTimeout(() => this.msg = "", 3000)
       }
     },
+    computed: {
+      testeAbc () {
+        return teste
+      }
+    },
     mounted () {
-      this.getPedidos()
+      onValue(reference, (snapshot) => {
+        snapshot.forEach(snap => {
+          console.log(snap.val())
+          this.requests = snap.val()
+        })
+      })
     },
     components: {
-      Message
+      Message,
+      InputSelect
     }
   }
 </script>

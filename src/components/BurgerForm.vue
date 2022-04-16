@@ -13,85 +13,50 @@
           <InputSelect id="breadTypes" 
           v-model="form.breadType"
           label="Pão"
-          :options="options.breadType"/>
+          :options="options.breadTypes"/>
         </div>
         <div class="input-container">
           <InputSelect id="breadModes" 
           v-model="form.breadMode"
           label="Modo do Pão"
-          :options="options.breadMode"/>
+          :options="options.breadModes"/>
         </div>
         <div class="input-container">
           <InputSelect id="burgerTypes"
           v-model="form.burgerType"
           label="Hamburguer"
-          :options="options.burgerType"/>
+          :options="options.burgerTypes"/>
         </div>
-        <div class="opcionais-container">
-          <label class="opcionais-title">
-            Temperos
-          </label>
-          <div class="checkbox-container" 
-          v-for="item in options.spices" 
-          :key="item.id">
-            <input type="checkbox" 
-            :value="item.type" 
-            v-model="form.spices">
-            <span>{{ item.type }}</span>
-          </div>
-        </div>
-        <div class="opcionais-container">
-          <label class="opcionais-title">
-            Frios
-          </label>
-          <div class="checkbox-container" 
-          v-for="item in options.coldCuts" 
-          :key="item.id">
-            <input type="checkbox" 
-            :value="item.type" 
-            v-model="form.coldCuts">
-            <span>{{ item.type }}</span>
-          </div>
-        </div>
-        <div class="opcionais-container">
-          <label class="opcionais-title">
-            Salada
-          </label>
-          <div class="checkbox-container" 
-          v-for="item in options.salads" 
-          :key="item.id">
-            <input type="checkbox" 
-            :value="item.type" 
-            v-model="form.salads">
-            <span>{{ item.type }}</span>
-          </div>
-        </div>
-        <div class="opcionais-container">
-          <label class="opcionais-title">
-            Extras
-          </label>
-          <div class="checkbox-container" 
-          v-for="item in options.extras" 
-          :key="item.id">
-            <input type="checkbox"
-            :value="item.type" 
-            v-model="form.extras">
-            <span>{{ item.type }}</span>
-          </div>
-        </div>
-        <div class="opcionais-container">
-          <label class="opcionais-title">
-            Molhos
-          </label>
-          <div class="checkbox-container" 
-          v-for="item in options.sauces" 
-          :key="item.id">
-            <input type="checkbox" 
-            :value="item.type" 
-            v-model="form.sauces">
-            <span>{{ item.type }}</span>
-          </div>
-        </div>
+        <InputCheckbox
+        id="spices"
+        label="Temperos"
+        v-model="form.spices"
+        :options="options.spices"
+        />
+        <InputCheckbox
+        id="coldCuts"
+        label="Frios"
+        v-model="form.coldCuts"
+        :options="options.coldCuts"
+        />
+        <InputCheckbox
+        id="salads"
+        label="Saladas"
+        v-model="form.salads"
+        :options="options.salads"
+        />
+        <InputCheckbox
+        id="extras"
+        label="Extras"
+        v-model="form.extras"
+        :options="options.extras"
+        />
+        <InputCheckbox
+        id="sauces"
+        label="Molhos"
+        v-model="form.sauces"
+        :options="options.sauces"
+        />
         <div class="input-container-btn">
           <input type="submit" value="Finalizar Pedido" class="submit-btn">
         </div>
@@ -102,9 +67,12 @@
 
 <script>
 import Message from './Message'
-import InputText from '@/components/inputs/Text.vue'
-import InputSelect from '@/components/inputs/Select.vue'
-import InputCheckBox from '@/components/inputs/Checkbox.vue'
+import InputText from '@/components/inputs/Text'
+import InputSelect from '@/components/inputs/Select'
+import InputCheckbox from '@/components/inputs/Checkbox'
+
+import { setBurger, getBurgers } from '@/firebase'
+import { v4 as uuidv4 } from 'uuid';
 
 export default {
   name: "BurgerForm",
@@ -112,10 +80,13 @@ export default {
     Message,
     InputText,
     InputSelect,
-    InputCheckBox
+    InputCheckbox
   },
-  mounted () {
-    this.getIngredients()
+  async mounted () {
+    // console.log(setBurger({
+    //   username: 'usuario teste',
+    //   xpto: 'udsadas'
+    // }))
   },
   data() {
     return {
@@ -131,39 +102,91 @@ export default {
         sauces: []
       },
       options: {
-        breadTypes: [],
-        breadModes: [],
-        burgerType: [],
-        spices: [],
-        coldCuts: [],
-        salads: [],
-        extras: [],
-        sauces: []
+        breadTypes: [
+          { id: 1, value: "Carne" },
+          { id: 2, value: "Vegetariano" },
+          { id: 3, value: "Sem Hamburguer" }
+        ],
+        breadModes: [
+        { id: 1, value: "Normal" },
+        { id: 2, value: "Selado + Azeite" },
+        { id: 3, value: "Selado + Manteiga" },
+        { id: 4, value: "Selado + Margarina" }
+        ],
+        burgerTypes: [
+          { id: 1, value: "Normal" },
+          { id: 2, value: "Com Gergelim" }
+        ],
+        spices: [
+          { id: 1, value: "Sal" },
+          { id: 2, value: "Pimenta" },
+          { id: 3, value: "Fumaça em Pó" },
+          { id: 4, value: "Edu Guedes" }
+        ],
+        coldCuts: [
+          { id: 1, value: "Presunto" },
+          { id: 2, value: "Salame" },
+          { id: 3, value: "Cheddar" },
+          { id: 4, value: "Queijo Mussarela" }
+        ],
+        salads: [
+          { id: 1, value: "Alface" },
+          { id: 2, value: "Tomate" },
+          { id: 3, value: "Pepino" },
+          { id: 4, value: "Cebola Roxa" }
+        ],
+        extras: [
+          { id: 1, value: "Ovo" },
+          { id: 2, value: "Bacon" },
+          { id: 3, value: "Cebola Caramelizada" },
+          { id: 4, value: "Orégano" }],
+        sauces: [
+          { id: 1, value: "Ketchup" },
+          { id: 2, value: "Requeijão" },
+          { id: 3, value: "Maionese" },
+          { id: 4, value: "Maionese Verde" }
+        ]
       },
       msg: null
     } 
   },
   methods: {
-    async getIngredients() {
-      const req = await fetch('https://ritasburger-api.herokuapp.com/ingredients')
-      const data = await req.json()
-      this.options.breadType = data.breadType
-      this.options.breadMode = data.breadMode
-      this.options.burgerType = data.burgerType
-      this.options.spices = data.spices
-      this.options.coldCuts = data.coldCuts
-      this.options.salads = data.salad
-      this.options.extras = data.extras
-      this.options.sauces = data.sauces
-    },
+    // async getIngredients() {
+    //   const req = await fetch('https://ritasburger-api.herokuapp.com/ingredients')
+    //   const data = await req.json()
+    //   this.options.breadType = data.breadType
+    //   this.options.breadMode = data.breadMode
+    //   this.options.burgerType = data.burgerType
+    //   this.options.spices = data.spices
+    //   this.options.coldCuts = data.coldCuts
+    //   this.options.salads = data.salad
+    //   this.options.extras = data.extras
+    //   this.options.sauces = data.sauces
+    // },
     async createBurger($event) {
-      const jsonInText = JSON.stringify(this.form)
+      const jsonInText = JSON.parse(JSON.stringify(this.form))
+      const oldData = await getBurgers().then(x => {
+        return x?.[jsonInText.username] ?? []
+      })
+      const data = {
+        [this.form.username]: [
+          ...oldData,
+          {
+          id: uuidv4(),
+          status: 'Em espera',
+          ...jsonInText
+          }
+        ].filter(x => x !== undefined)
+      }
+      console.log(oldData, data)
+      setBurger(data)
 
-      const req = await fetch("https://ritasburger-api.herokuapp.com/requests", {
-        method: "POST",
-        headers: { "Content-Type" : "application/json" },
-        body: jsonInText
-      });
+      // console.log(jsonInText)
+      // const req = await fetch("https://ritas-burger-default-rtdb.firebaseio.com/", {
+      //   method: "POST",
+      //   headers: { "Content-Type" : "application/json" },
+      //   body: jsonInText
+      // });
       
       this.msg = "Pedido realizado com sucesso!"
       setTimeout(() => this.msg = "", 3000)
@@ -216,32 +239,7 @@ export default {
     padding: 5px 10px;
   }
   
-  .opcionais-container {
-    display: flex;
-    margin-bottom: 10px;
-    flex-direction: row;
-    flex-wrap: wrap;
-  }
 
-  .opcionais-title {
-    width: 100%;
-  }
-
-  .checkbox-container {
-    display: flex;
-    align-items: flex-start;
-    width: 50%;
-    margin-bottom: 10px;
-  }
-
-  .checkbox-container span,
-  .checkbox-container input {
-    width: auto;
-  }
-
-  .checkbox-container span {
-    margin-left: 10px;
-  }
 
   .input-container-btn {
     display: flex;

@@ -1,15 +1,15 @@
 <template>
   <div class="custom-select">
-    <label :for="id">{{ label }}</label>
+    <label v-if="label" :for="id">{{ label }}</label>
     <select :id="id" 
     :value="modelValue"
     @input="$emit('update:modelValue', $event.target.value)"
     required>
       <option v-for="item in options"
       :key="item.id" 
-      :value="item.type"
+      :value="item.value"
       >
-        {{ item.type }}
+        {{ item.value }}
       </option>
     </select>
   </div>
