@@ -3,10 +3,12 @@
     <label :for="id">{{ label }}</label>
     <select :id="id" 
     :value="modelValue"
-    @input="$emit('update:modelValue', $event.target.value)">
+    @input="$emit('update:modelValue', $event.target.value)"
+    required>
       <option v-for="item in options"
       :key="item.id" 
-      :value="item.id">
+      :value="item.type"
+      >
         {{ item.type }}
       </option>
     </select>

@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="main">
     <div>
       <form id="burger-form" @submit.prevent="createBurger">
         <h1>Monte o seu burger ♥</h1>
@@ -8,8 +8,6 @@
         label="Nome" 
         placeholder="Digite seu nome" 
         v-model="form.username" />
-        
-        
 
         <div class="input-container">
           <InputSelect id="breadTypes" 
@@ -24,19 +22,21 @@
           :options="options.breadMode"/>
         </div>
         <div class="input-container">
-          <InputSelect id="burgerTypes" 
+          <InputSelect id="burgerTypes"
           v-model="form.burgerType"
           label="Hamburguer"
           :options="options.burgerType"/>
         </div>
-
-
         <div class="opcionais-container">
           <label class="opcionais-title">
-            Tempero
+            Temperos
           </label>
-          <div class="checkbox-container" v-for="item in options.spices" :key="item.id">
-            <input type="checkbox" :value="item.type" v-model="form.spices">
+          <div class="checkbox-container" 
+          v-for="item in options.spices" 
+          :key="item.id">
+            <input type="checkbox" 
+            :value="item.type" 
+            v-model="form.spices">
             <span>{{ item.type }}</span>
           </div>
         </div>
@@ -95,7 +95,6 @@
         <div class="input-container-btn">
           <input type="submit" value="Finalizar Pedido" class="submit-btn">
         </div>
-        {{ form }}
       </form>
     </div>
   </div>
@@ -105,8 +104,7 @@
 import Message from './Message'
 import InputText from '@/components/inputs/Text.vue'
 import InputSelect from '@/components/inputs/Select.vue'
-import Select from '@/components/inputs/Text.vue'
-import Checkbox from '@/components/inputs/Checkbox.vue'
+import InputCheckBox from '@/components/inputs/Checkbox.vue'
 
 export default {
   name: "BurgerForm",
@@ -114,8 +112,7 @@ export default {
     Message,
     InputText,
     InputSelect,
-    Select,
-    Checkbox
+    InputCheckBox
   },
   mounted () {
     this.getIngredients()
@@ -160,20 +157,7 @@ export default {
       this.options.sauces = data.sauces
     },
     async createBurger($event) {
-      const data = {
-        nameRequest: this.form.username,
-        breadTypeRequest: this.form.breadType,
-        breadModeRequest: this.form.breadMode,
-        burgerTypeRequest: this.form.burgerType,
-        checkedSpices: Array.from(this.form.spices),
-        checkedColdCuts: Array.from(this.form.coldCuts),
-        checkedSalad: Array.from(this.form.salads),
-        checkedExtras: Array.from(this.form.extras),
-        checkedSauces: Array.from(this.form.sauces),
-        statusRequest: "Solicitado"
-      }
-
-      const jsonInText = JSON.stringify(data)
+      const jsonInText = JSON.stringify(this.form)
 
       const req = await fetch("https://ritasburger-api.herokuapp.com/requests", {
         method: "POST",
@@ -200,11 +184,10 @@ export default {
 </script>
 
 <style scoped>
-
   #burger-form {
     max-width: 500px;
     background-color: #FFF;
-    margin: 50px auto 50px 50px;
+    margin: 30px auto;
     border: 2px solid #222;
     border-radius: 10px;
     padding: 10px;

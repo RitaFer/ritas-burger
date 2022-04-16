@@ -8,52 +8,52 @@
         <p>{{ request.id }}</p>
       </div>
       <div class="name">
-        <p>{{ request.nameRequest }}</p>
+        <p>{{ request.username }}</p>
       </div>
       <div class="main">
         <div class="right">
           <div class="breadType">
             <span>Tipo do Pão: </span>
-            <p>{{ request.breadTypeRequest }}</p>
+            <p>{{ request.breadType }}</p>
           </div>
           <div class="burgerType">
             <span>Hamburguer: </span>
-            <p>{{ request.burgerTypeRequest }}</p>
+            <p>{{ request.burgerType }}</p>
           </div>
           <div class="coldCuts">
             <span>Frios: </span>
-            <ul v-for="(checkedColdCuts, index) in request.checkedColdCuts" :key="index">
-              <li>{{ checkedColdCuts }}</li>
+            <ul v-for="(coldCuts, index) in request.coldCuts" :key="index">
+              <li>{{ coldCuts }}</li>
             </ul>
           </div>
           <div class="add">
             <span>Extras: </span>
-            <ul v-for="(checkedExtras, index) in request.checkedExtras" :key="index">
-              <li>{{ checkedExtras }}</li>
+            <ul v-for="(extras, index) in request.extras" :key="index">
+              <li>{{ extras }}</li>
             </ul>
           </div>
         </div>
         <div class="left">
           <div class="breadMode">
             <span>Modo do Pão: </span>
-            <p>{{ request.breadModeRequest }}</p>
+            <p>{{ request.breadMode }}</p>
           </div>
           <div class="spices">
             <span>Temperos: </span>
-            <ul v-for="(checkedSpices, index) in request.checkedSpices" :key="index">
-              <li>{{ checkedSpices }}</li>
+            <ul v-for="(spices, index) in request.spices" :key="index">
+              <li>{{ spices }}</li>
             </ul>
           </div>
           <div class="salad">
             <span>Salada: </span>
-            <ul v-for="(checkedSalad, index) in request.checkedSalad" :key="index">
-              <li>{{ checkedSalad }}</li>
+            <ul v-for="(salad, index) in request.salad" :key="index">
+              <li>{{ salad }}</li>
             </ul>
           </div>
           <div class="sauces">
             <span>Molhos: </span>
-            <ul v-for="(checkedSauces, index) in request.checkedSauces" :key="index">
-              <li>{{ checkedSauces }}</li>
+            <ul v-for="(sauces, index) in request.sauces" :key="index">
+              <li>{{ sauces }}</li>
             </ul>
           </div>
         </div>
