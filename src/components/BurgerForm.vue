@@ -188,7 +188,7 @@ export default {
   #burger-form {
     max-width: 500px;
     background-color: #FFF;
-    margin: 50px auto 50px 50px;
+    margin: 50px auto;
     border: 2px solid #222;
     border-radius: 10px;
     padding: 10px;
